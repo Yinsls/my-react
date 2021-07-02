@@ -1,6 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { DatePicker } from "antd";
+import "./test.less";
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <DatePicker />
+        <span className="ttt">11112</span>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
