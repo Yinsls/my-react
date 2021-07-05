@@ -1,6 +1,5 @@
 import "./App.css";
 import { DatePicker } from "antd";
-import "./test.less";
 
 function App() {
   return (
