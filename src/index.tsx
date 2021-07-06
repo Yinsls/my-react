@@ -2,13 +2,30 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import "antd/dist/antd.css";
-import App from "./App";
+import App from "./views/app/Index";
+import Login from "./views/login/Index";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 // import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+    <Switch>
+      <Route path="/app" component={App}></Route>
+      <Route path="/login" component={Login}></Route>
+      <Route path="/test" component={App}>
+        <Redirect to="/login">Test</Redirect>
+      </Route>
+      <Route path="/">Indexs</Route>
+    </Switch>
+    {/* <React.StrictMode>
+        <App />
+      </React.StrictMode> */}
+  </Router>,
   document.getElementById("root")
 );
 
