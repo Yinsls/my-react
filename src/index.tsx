@@ -1,31 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+// import reportWebVitals from "./reportWebVitals";
 import "antd/dist/antd.css";
-import App from "./views/app/Index";
+import { App, TT } from "./views/app/Index";
 import Login from "./views/login/Index";
+import Clock from "./views/time/Index";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-// import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path="/app" component={App}></Route>
+      <Route path="/app">
+        {/* <App name="Test" xxx="safd" /> */}
+        <TT name="zhangsan" age={18}></TT>
+      </Route>
       <Route path="/login" component={Login}></Route>
+      <Route path="/time" component={Clock}></Route>
       <Route path="/test" component={App}>
         <Redirect to="/login">Test</Redirect>
       </Route>
       <Route path="/">Indexs</Route>
     </Switch>
-    {/* <React.StrictMode>
-        <App />
-      </React.StrictMode> */}
   </Router>,
+  // <RenderRouter router={router}></RenderRouter>,
   document.getElementById("root")
 );
 
