@@ -26,8 +26,8 @@ export default class Clock extends Component<any> {
     });
   };
 
-  btnClick = () => {
-    console.log("btn.click");
+  btnClick = (str: string) => {
+    console.log("btn.click" + str);
   };
 
   componentDidMount() {
@@ -46,7 +46,7 @@ export default class Clock extends Component<any> {
         <h3>Time: {this.state.time}</h3>
         <p>{this.state.list}</p>
         {/* <button onClick={this.addList.bind(this, "12345")}>click</button> */}
-        <Button onClick={this.btnClick} />
+        <Button onClick={this.btnClick.bind(this, "hello")} />
       </div>
     );
   }
