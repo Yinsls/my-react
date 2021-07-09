@@ -50,12 +50,12 @@ var numSubarraysWithSum = function (nums, goal) {
     cnt.set(sum, (cnt.get(sum) || 0) + 1);
     sum += num;
     ret += cnt.get(sum - goal) || 0;
-    console.log(cnt);
+    console.log(cnt, sum);
   }
   return ret;
 };
 
-const nums = [0, 0, 1, 0];
+const nums = [0, 0, 1, 0, 1];
 const goal = 0;
 const result = numSubarraysWithSum(nums, goal);
 console.log("Result: ", result);
