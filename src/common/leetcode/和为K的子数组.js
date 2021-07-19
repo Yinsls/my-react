@@ -4,27 +4,30 @@
  * @return {number}
  */
 var subarraySum = function (nums, k) {
-  const total = new Map();
+  let count = 0;
+  let sumMap = new Map();
+  let i = 0;
   let sum = 0;
-  let length = 0;
-  for (let i = 0; i < nums.length; i++) {
+  sumMap.set(0, 1);
+  while (i < nums.length) {
     sum += nums[i];
-    total.set(sum, i);
+    if (sumMap.has(sum - k)) {
+      count += sumMap.get(sum - k);
+    }
 
-    const prev = total.get(sum - k);
-    console.log(prev)
-    if (prev) {
-      length++;
+    if (sumMap.has(sum)) {
+      sumMap.set(sum, sumMap.get(sum) + 1);
+    } else {
+      sumMap.set(sum, 1);
     }
-    if (sum === k) {
-      length++;
-    }
+    i++;
   }
-  console.log(total)
-  return length;
+  return count;
 };
 
-const store = [1, 1, 1, 1, 1];
-const total = 2;
-const result = subarraySum(store, total);
+const store = [3, 2, 1, -1, -2];
+// const store = [0, 0, 0, 0];
+// const store = [1, 1, 1, -1, -1];
+const target = 2;
+const result = subarraySum(store, target);
 console.log('Result: ', result);

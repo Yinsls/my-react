@@ -1,8 +1,14 @@
 # React 学习记录
 
+## 组件设计原则
+
+> 一个组件只负责一个功能
+
 ## props
 
 > Father.class.Component({name: string, age: number}) => `<Father name="str" age={18} />`
+> Props.children: 类似 vue.slot 插槽  
+> Props.attr: 属性传值，如，父组件传值给子组件，传递内容不限，如对象数据，数组，html，组件...,因此多插槽通过属性传递组件方式渲染在子组件
 
 ## Router
 
@@ -27,3 +33,10 @@
   2、也可使用箭头函数方式设置class.function: handleClick = () => {...done}    button.onClick={this.handleClick}
   3、调用处使用箭头函数: button.onClick={() => this.handleClick()}    可能造成组件额外渲染浪费性能，推荐前两种方式
 ```
+
+## html 元素边距
+
+> scrollHeight: 全部高度
+> scrollTop: 滚动距离(滚动条距离顶部的长度) (没有滚动功能的元素为 0)
+> clientHeight: 视图窗口高度(不包含边框、内边距)
+> offsetHeight: 元素可视高度(包含边框、内边距)
