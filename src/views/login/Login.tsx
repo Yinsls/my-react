@@ -47,7 +47,11 @@ export default class ToLogin extends Component {
           onChange={this.onChangeVal.bind(this)}
           placeholder="密码"
         />
-        <Button className="to-sign-in" type="primary" onClick={this.toSignIn}>
+        <Button
+          className="to-sign-in"
+          type="primary"
+          onClick={this.toSignIn.bind(this)}
+        >
           登录
         </Button>
         <Button className="forget" type="link">
