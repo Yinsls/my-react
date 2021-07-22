@@ -6,28 +6,13 @@ interface TrailingObj {
   y: number;
 }
 
-abstract class TT {
-  abstract width?: number;
-  abstract height?: number;
-  abstract opacity?: number;
-  abstract x: number;
-  abstract y: number;
-  abstract ay: number;
-  abstract ax: number;
-  abstract ao: number;
-  abstract speed: number;
-  abstract time: number;
-  abstract death: number;
-  abstract icon: any;
-}
-
 /** 拖尾动画 */
-export default class Trailing extends TT {
+export default class Trailing {
   width = 3;
   height = 3;
   opacity = 1;
-  x: number;
-  y: number;
+  x = 0;
+  y = 0;
   ay = 0.3; // y轴加速度
   ax = 0.02; // x轴加速度
   ao = 0.04; // 渐隐速率
@@ -36,23 +21,16 @@ export default class Trailing extends TT {
   death = 100; // 死亡时间
   icon: HTMLElement; // icon元素
   constructor(opt: TrailingObj) {
-    super();
-    this.x = opt.x;
-    this.y = opt.y;
-    this.width = opt.width || this.width;
-    this.height = opt.height || this.height;
-    this.opacity = opt.opacity || this.opacity;
+    this.initOpt(opt);
     this.icon = this.createIcon();
-    // this.initOpt(opt);
     window.requestAnimationFrame(this.passed.bind(this));
   }
 
   /** 初始化拖尾信息 */
   initOpt(obj: any) {
-    for (let xxx in obj) {
-      if (!Reflect.has(obj, xxx)) continue;
-      console.log(xxx, this);
-      // this[xxx] = obj[xxx] as any;
+    for (let key in obj) {
+      if (!Reflect.has(this, key)) continue;
+      Reflect.set(this, key, obj[key]);
     }
   }
 

@@ -12,7 +12,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false, // this
+    "isolatedModules": true, // this
     "noEmit": true,
     "jsx": "react-jsx"
   },

@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 // import reportWebVitals from "./reportWebVitals";
 import "antd/dist/antd.css";
-import { App } from "./views/app/Index";
+import App from "./views/app/Index";
 import Login from "./views/login/Index";
 import Clock from "./views/time/Index";
 import Calculator from "./views/thremometer/Calculator";
+import { Context } from "./views/context/Index";
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,6 +24,7 @@ ReactDOM.render(
       <Route path="/login" component={Login}></Route>
       <Route path="/temperature" component={Calculator}></Route>
       <Route path="/time" component={Clock}></Route>
+      <Route path="/context" component={Context}></Route>
       <Route path="/test" component={App}>
         <Redirect to="/login">Test</Redirect>
       </Route>
