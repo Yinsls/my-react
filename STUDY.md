@@ -19,6 +19,13 @@
 
 > componentDidMount: 元素渲染完成
 > componentWillUnmount: 元素即将移除
+> shouldComponentUpdate: 页面视图更新(返回 true 表示更新视图，否则不更新视图)
+> React.PureComponent: 监听组件中的属性对象是否变化而自动决定是否更新视图，当对象为数组时，直接 push 或 delete 无效，因数组还是同一个，可使用 arr.concat([])或[...arr]生成新数组再 setState 赋值
+
+## react 使用
+
+> ReactDom.createPortal(childDom, targetDom): 将 child 元素渲染到 targetDom 中，如父元素 hidden 时，其中子元素依旧显示
+> Profiler: 检测 react 组件更新渲染时间 : `<Profiler id="testId" onRender={callback}> <Child /> </Profiler>`
 
 ## State
 

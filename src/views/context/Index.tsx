@@ -26,7 +26,7 @@ export class Context extends Component {
     return (
       <StudentContext.Provider value={{ name: "Student" }}>
         <button onClick={this.handleChange.bind(this)}>click</button>
-        <div>
+        <div onClick={() => console.log("father")}>
           father: 最外层
           <br />
           <Child>你好啊</Child>
@@ -35,5 +35,3 @@ export class Context extends Component {
     );
   }
 }
-
-export { StudentContext };

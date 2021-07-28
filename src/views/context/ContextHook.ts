@@ -1,3 +1,9 @@
 import React from "react";
 
-export const StudentContext: any = React.createContext({ name: "xxxx" }); //默认值
+const StudentContext: any = React.createContext({ name: "xxxx" });
+export function useContext() {
+  // const StudentContext: any = React.createContext({ name: "xxxx" });
+  return StudentContext;
+}
+
+export { StudentContext };
