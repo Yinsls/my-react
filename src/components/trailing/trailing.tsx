@@ -55,6 +55,7 @@ export default class Trailing {
         height: ${this.height}px; 
         background: ${color};
         position: fixed;
+        z-index: 9999;
         top: ${this.y}px;
         left: ${this.x}px;
       `

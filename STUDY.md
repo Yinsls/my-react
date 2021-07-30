@@ -49,6 +49,16 @@
 > clientHeight: 视图窗口高度(不包含边框、内边距)
 > offsetHeight: 元素可视高度(包含边框、内边距)
 
+## redux
+
+```typescript
+  action: 触发器
+  reducers: 修改器
+  state: 数据源
+
+  运用: dispatch(action)   action => reduces() => set state|get state
+```
+
 ## nginx
 
 > 官网: 'http://nginx.org/en/download.html'
