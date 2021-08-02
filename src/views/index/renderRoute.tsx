@@ -5,7 +5,9 @@ import {
   BrowserRouter as Router,
   Switch,
 } from "react-router-dom";
-import { routes } from "../../router/routes";
+import { routes, pRoutes } from "../../router/routes";
+
+const lastRoutes = [...pRoutes, ...routes];
 
 function getComponentArr(routes: any) {
   const res: any[] = [];
@@ -26,7 +28,7 @@ export default function RenderRoute() {
   return (
     <Fragment>
       <Router>
-        <Switch>{getComponentArr(routes)}</Switch>
+        <Switch>{getComponentArr(lastRoutes)}</Switch>
       </Router>
     </Fragment>
   );

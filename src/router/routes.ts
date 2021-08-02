@@ -5,3 +5,7 @@ export const routes = [
   { path: '/login', component: asyncComponent(() => import('../views/login/Index')) },
   { path: '/', redirect: '/login' },
 ]
+
+export const pRoutes = [
+  { path: '/workbench', component: asyncComponent(() => import('../wyyl/Kol/workbench/Index')) },
+]
