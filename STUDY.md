@@ -4,6 +4,396 @@
 
 > 一个组件只负责一个功能
 
+## 自动格式化
+
+> eslintrc.js
+
+```javascript
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
+  parser: "vue-eslint-parser",
+  parserOptions: {
+    parser: "@typescript-eslint/parser",
+    ecmaVersion: 2020,
+    sourceType: "module",
+    jsxPragma: "React",
+    ecmaFeatures: {
+      jsx: true,
+      tsx: true,
+    },
+  },
+  extends: [
+    "plugin:vue/vue3-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+  ],
+  rules: {
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "vue/custom-event-name-casing": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        argsIgnorePattern: "^h$",
+        varsIgnorePattern: "^h$",
+      },
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        argsIgnorePattern: "^h$",
+        varsIgnorePattern: "^h$",
+      },
+    ],
+    "space-before-function-paren": "off",
+
+    "vue/attributes-order": "off",
+    "vue/one-component-per-file": "off",
+    "vue/html-closing-bracket-newline": "off",
+    "vue/max-attributes-per-line": "off",
+    "vue/multiline-html-element-content-newline": "off",
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/attribute-hyphenation": "off",
+    // 'vue/html-self-closing': 'off',
+    "vue/require-default-prop": "off",
+    "vue/html-self-closing": [
+      "error",
+      {
+        html: {
+          void: "always",
+          normal: "never",
+          component: "always",
+        },
+        svg: "always",
+        math: "always",
+      },
+    ],
+  },
+};
+```
+
+> tsconfig.json
+
+```javascript
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Basic Options */
+    // "incremental": true,                         /* Enable incremental compilation */
+    "target": "es5",                                /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+    "module": "esnext",                           /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
+    // "lib": [],                                   /* Specify library files to be included in the compilation. */
+    // "allowJs": true,                             /* Allow javascript files to be compiled. */
+    // "checkJs": true,                             /* Report errors in .js files. */
+    // "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */
+    // "declaration": true,                         /* Generates corresponding '.d.ts' file. */
+    // "declarationMap": true,                      /* Generates a sourcemap for each corresponding '.d.ts' file. */
+    // "sourceMap": true,                           /* Generates corresponding '.map' file. */
+    // "outFile": "./",                             /* Concatenate and emit output to single file. */
+    // "outDir": "./",                              /* Redirect output structure to the directory. */
+    // "rootDir": "./",                             /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    // "composite": true,                           /* Enable project compilation */
+    // "tsBuildInfoFile": "./",                     /* Specify file to store incremental compilation information */
+    // "removeComments": true,                      /* Do not emit comments to output. */
+    // "noEmit": true,                              /* Do not emit outputs. */
+    // "importHelpers": true,                       /* Import emit helpers from 'tslib'. */
+    // "downlevelIteration": true,                  /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
+    // "isolatedModules": true,                     /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+
+    /* Strict Type-Checking Options */
+    "strict": true,                                 /* Enable all strict type-checking options. */
+    // "noImplicitAny": true,                       /* Raise error on expressions and declarations with an implied 'any' type. */
+    // "strictNullChecks": true,                    /* Enable strict null checks. */
+    // "strictFunctionTypes": true,                 /* Enable strict checking of function types. */
+    // "strictBindCallApply": true,                 /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
+    // "strictPropertyInitialization": true,        /* Enable strict checking of property initialization in classes. */
+    // "noImplicitThis": true,                      /* Raise error on 'this' expressions with an implied 'any' type. */
+    // "alwaysStrict": true,                        /* Parse in strict mode and emit "use strict" for each source file. */
+
+    /* Additional Checks */
+    // "noUnusedLocals": true,                      /* Report errors on unused locals. */
+    // "noUnusedParameters": true,                  /* Report errors on unused parameters. */
+    // "noImplicitReturns": true,                   /* Report error when not all code paths in function return a value. */
+    // "noFallthroughCasesInSwitch": true,          /* Report errors for fallthrough cases in switch statement. */
+    // "noUncheckedIndexedAccess": true,            /* Include 'undefined' in index signature results */
+    // "noPropertyAccessFromIndexSignature": true,  /* Require undeclared properties from index signatures to use element accesses. */
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",                  /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "baseUrl": ".",                             /* Base directory to resolve non-absolute module names. */
+    "paths": {
+      "/@/*": ["src/*"],
+    },                                 /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    // "rootDirs": [],                              /* List of root folders whose combined content represents the structure of the project at runtime. */
+    // "typeRoots": [],                             /* List of folders to include type definitions from. */
+    "types": ["vite/client"],                              /* Type declaration files to be included in compilation. */
+    // "allowSyntheticDefaultImports": true,        /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
+    "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    // "preserveSymlinks": true,                    /* Do not resolve the real path of symlinks. */
+    // "allowUmdGlobalAccess": true,                /* Allow accessing UMD globals from modules. */
+
+    /* Source Map Options */
+    // "sourceRoot": "",                            /* Specify the location where debugger should locate TypeScript files instead of source locations. */
+    // "mapRoot": "",                               /* Specify the location where debugger should locate map files instead of generated locations. */
+    // "inlineSourceMap": true,                     /* Emit a single file with source maps instead of having a separate file. */
+    // "inlineSources": true,                       /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
+
+    /* Experimental Options */
+    "experimentalDecorators": true,              /* Enables experimental support for ES7 decorators. */
+    // "emitDecoratorMetadata": true,               /* Enables experimental support for emitting type metadata for decorators. */
+
+    /* Advanced Options */
+    "skipLibCheck": true,                           /* Skip type checking of declaration files. */
+    "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
+  }
+}
+
+```
+
+> prettier.config.js
+
+```javascript
+module.exports = {
+  printWidth: 100,
+  tabWidth: 2,
+  useTabs: false,
+  semi: true,
+  vueIndentScriptAndStyle: true,
+  singleQuote: true,
+  quoteProps: "as-needed",
+  bracketSpacing: true,
+  trailingComma: "es5",
+  jsxBracketSameLine: false,
+  jsxSingleQuote: false,
+  arrowParens: "always",
+  insertPragma: false,
+  requirePragma: false,
+  proseWrap: "never",
+  htmlWhitespaceSensitivity: "strict",
+  endOfLine: "lf",
+  rangeStart: 0,
+};
+```
+
+> stylelint.config.js
+
+```javascript
+module.exports = {
+  root: true,
+  plugins: ["stylelint-order"],
+  extends: ["stylelint-config-standard", "stylelint-config-prettier"],
+  rules: {
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        ignorePseudoClasses: ["global"],
+      },
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        ignoreAtRules: ["function", "if", "each", "include", "mixin"],
+      },
+    ],
+    "no-empty-source": null,
+    "named-grid-areas-no-invalid": null,
+    "unicode-bom": "never",
+    "no-descending-specificity": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "declaration-colon-space-after": "always-single-line",
+    "declaration-colon-space-before": "never",
+    "rule-empty-line-before": [
+      "always",
+      {
+        ignore: ["after-comment", "first-nested"],
+      },
+    ],
+    "unit-no-unknown": [true, { ignoreUnits: ["rpx"] }],
+    // Specify the alphabetical order of the attributes in the declaration block
+    "order/properties-order": [
+      "position",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "z-index",
+      "display",
+      "float",
+      "width",
+      "height",
+      "max-width",
+      "max-height",
+      "min-width",
+      "min-height",
+      "padding",
+      "padding-top",
+      "padding-right",
+      "padding-bottom",
+      "padding-left",
+      "margin",
+      "margin-top",
+      "margin-right",
+      "margin-bottom",
+      "margin-left",
+      "margin-collapse",
+      "margin-top-collapse",
+      "margin-right-collapse",
+      "margin-bottom-collapse",
+      "margin-left-collapse",
+      "overflow",
+      "overflow-x",
+      "overflow-y",
+      "clip",
+      "clear",
+      "font",
+      "font-family",
+      "font-size",
+      "font-smoothing",
+      "osx-font-smoothing",
+      "font-style",
+      "font-weight",
+      "hyphens",
+      "src",
+      "line-height",
+      "letter-spacing",
+      "word-spacing",
+      "color",
+      "text-align",
+      "text-decoration",
+      "text-indent",
+      "text-overflow",
+      "text-rendering",
+      "text-size-adjust",
+      "text-shadow",
+      "text-transform",
+      "word-break",
+      "word-wrap",
+      "white-space",
+      "vertical-align",
+      "list-style",
+      "list-style-type",
+      "list-style-position",
+      "list-style-image",
+      "pointer-events",
+      "cursor",
+      "background",
+      "background-attachment",
+      "background-color",
+      "background-image",
+      "background-position",
+      "background-repeat",
+      "background-size",
+      "border",
+      "border-collapse",
+      "border-top",
+      "border-right",
+      "border-bottom",
+      "border-left",
+      "border-color",
+      "border-image",
+      "border-top-color",
+      "border-right-color",
+      "border-bottom-color",
+      "border-left-color",
+      "border-spacing",
+      "border-style",
+      "border-top-style",
+      "border-right-style",
+      "border-bottom-style",
+      "border-left-style",
+      "border-width",
+      "border-top-width",
+      "border-right-width",
+      "border-bottom-width",
+      "border-left-width",
+      "border-radius",
+      "border-top-right-radius",
+      "border-bottom-right-radius",
+      "border-bottom-left-radius",
+      "border-top-left-radius",
+      "border-radius-topright",
+      "border-radius-bottomright",
+      "border-radius-bottomleft",
+      "border-radius-topleft",
+      "content",
+      "quotes",
+      "outline",
+      "outline-offset",
+      "opacity",
+      "filter",
+      "visibility",
+      "size",
+      "zoom",
+      "transform",
+      "box-align",
+      "box-flex",
+      "box-orient",
+      "box-pack",
+      "box-shadow",
+      "box-sizing",
+      "table-layout",
+      "animation",
+      "animation-delay",
+      "animation-duration",
+      "animation-iteration-count",
+      "animation-name",
+      "animation-play-state",
+      "animation-timing-function",
+      "animation-fill-mode",
+      "transition",
+      "transition-delay",
+      "transition-duration",
+      "transition-property",
+      "transition-timing-function",
+      "background-clip",
+      "backface-visibility",
+      "resize",
+      "appearance",
+      "user-select",
+      "interpolation-mode",
+      "direction",
+      "marks",
+      "page",
+      "set-link-source",
+      "unicode-bidi",
+      "speak",
+    ],
+  },
+  ignoreFiles: ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts"],
+};
+```
+
+---
+
+> typescript 提供及校验 ts 规则(tsconfig)
+
+---
+
+> prettier + stylelint: 'https://www.cnblogs.com/1041258672ai1207/p/14620447.html'
+> stylelint css 样式检测，为下列提供基础
+> stylelint-config-standard 一些常见的 css 书写规范
+> stylelint-config-prettier 关闭所有不必要的或者有可能与 Prettier 冲突
+> stylelint-order 提供给 css 属性排序的功能
+> stylelint-config-rational-order 一套常见的 css 书写顺序
+> prettier 格式化
+> pretty-quick 提交即格式化 (在提交 commit 时自动调用 pretter 进行格式化)
+
 ## props
 
 > Father.class.Component({name: string, age: number}) => `<Father name="str" age={18} />`

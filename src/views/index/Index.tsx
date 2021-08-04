@@ -4,8 +4,8 @@ import "./index.css";
 import "antd/dist/antd.css";
 import "../../common/less/antd.less";
 import "../../common/less/public.less";
-import RenderRoute from "./renderRoute";
-import MouseMove from "../../components/trailing/MouseMove";
+import RenderRoute from "../../router/rouer";
+// import MouseMove from "../../components/trailing/MouseMove";
 import Moment from "moment";
 
 // const mouse = new MouseMove();

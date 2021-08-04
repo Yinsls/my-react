@@ -2,6 +2,7 @@ import { Input, Button } from "antd";
 import { Component } from "react";
 import Split from "../../components/split/index";
 import Register from "./Register";
+import { UpCircleOutlined } from "@ant-design/icons";
 
 type States = {
   username: string;
@@ -42,6 +43,7 @@ export default class ToLogin extends Component {
   render() {
     return (
       <div className="to-login">
+        <UpCircleOutlined />
         <Input
           className="username"
           name="username"

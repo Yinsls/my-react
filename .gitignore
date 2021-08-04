@@ -25,3 +25,6 @@ yarn-error.log*
 
 # project
 src/wyyl/
+
+# test page
+src/views/test/
