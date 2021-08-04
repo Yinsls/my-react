@@ -1,7 +1,20 @@
-export default function Login() {
+import Logo from "./Logo";
+import ToLogin from "./Login";
+import "./login.less";
+
+function Login() {
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login-box">
+      <div className="login">
+        <div className="logo">
+          <Logo />
+        </div>
+        <div className="sign-box">
+          <ToLogin />
+        </div>
+      </div>
     </div>
   );
 }
+
+export default Login;
