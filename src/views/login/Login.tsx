@@ -1,5 +1,5 @@
 import { Input, Button } from "antd";
-import { Component } from "react";
+import React, { Component } from "react";
 import Split from "../../components/split/index";
 import Register from "./Register";
 
@@ -7,6 +7,8 @@ type States = {
   username: string;
   password: string;
   visible: boolean;
+  loginRef: any;
+  position: { x: number; y: number };
 };
 
 export default class ToLogin extends Component {
@@ -16,7 +18,9 @@ export default class ToLogin extends Component {
     this.state = {
       username: "",
       password: "",
-      visible: true,
+      visible: false,
+      loginRef: React.createRef(),
+      position: { x: 0, y: 0 },
     };
   }
 
@@ -37,11 +41,17 @@ export default class ToLogin extends Component {
     console.log("登录: ", this.state);
   }
 
-  toRegiste() {}
+  componentDidMount() {
+    const target = this.state.loginRef?.current;
+    const position = { x: target.offsetLeft - 30, y: target.offsetTop - 40 };
+    this.setState({
+      position,
+    });
+  }
 
   render() {
     return (
-      <div className="to-login">
+      <div className="to-login" ref={this.state.loginRef}>
         <Input
           className="username"
           name="username"
@@ -79,6 +89,7 @@ export default class ToLogin extends Component {
         <Register
           visible={this.state.visible}
           setVisible={this.handleVisible.bind(this)}
+          position={this.state.position}
         />
       </div>
     );
