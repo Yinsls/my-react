@@ -1,10 +1,17 @@
 import { message } from "antd";
 import axios from "axios";
 
-axios.interceptors.request.use(
+const service = axios.create({
+  timeout: 30000
+})
+
+service.interceptors.request.use(
   (config) => {
     // if (store.state.token) {
     //   config.headers.Authorization = store.state.token
+    //     axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+    // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
     // }
     return config;
   },
@@ -13,7 +20,7 @@ axios.interceptors.request.use(
   }
 );
 
-axios.interceptors.response.use(
+service.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -49,3 +56,23 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+export const get = (url: string, data?: any) => {
+  return new Promise((resolve, reject) => {
+    service.get(url, data).then(res => {
+      resolve(res);
+    }).catch(err => {
+      reject(err);
+    })
+  })
+}
+
+export const post = (url: string, data?: any) => {
+  return new Promise((resolve, reject) => {
+    service.post(url, data).then(res => {
+      resolve(res);
+    }).catch(err => {
+      reject(err);
+    })
+  })
+}
+

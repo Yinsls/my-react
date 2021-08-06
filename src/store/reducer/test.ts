@@ -1,15 +1,34 @@
-import { defaultState, testState } from "../state/test";
-// import z from '../action/test'
-export const showList = (state = defaultState, action: { type: "test001" }) => {
+import { defaultState, CountState } from "../state/test";
+export const showList = (state = defaultState, action: any) => {
   if (action.type === "test001") {
-    return state;
-  }
-  return testState;
-};
-
-export const testReducer = (state = 0, action: { type: "tt" }) => {
-  if (action.type === "tt") {
-    return state + 10;
+    const list = state.list.filter(item => {
+      return item.id !== Number(action.id);
+    })
+    return { ...state, list };
+  } else if (action.type === 'test002') {
+    return { ...state, list: [{ name: 'no!', age: 100 }] };
   }
   return state;
+};
+
+export const countReducer = (state = CountState, action: any) => {
+  switch (action.type) {
+    case 'tt': {
+      return { count: state.count + 10 };
+    }
+    default: {
+      return state;
+    }
+  }
+};
+
+export const testReducer = (state = defaultState, action: any) => {
+  switch (action.type) {
+    case 'test': {
+      return state.list;
+    }
+    default: {
+      return state;
+    }
+  }
 };
