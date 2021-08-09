@@ -1,4 +1,7 @@
 import { Fragment } from "react";
+import store, { persistor } from "@/store";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/lib/integration/react";
 import {
   Redirect,
   Route,
@@ -28,9 +31,13 @@ export default function RenderRoute() {
   const routesList = getComponentArr(lastRoutes);
   return (
     <Fragment>
-      <Router>
-        <Switch>{routesList}</Switch>
-      </Router>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Router>
+            <Switch>{routesList}</Switch>
+          </Router>
+        </PersistGate>
+      </Provider>
     </Fragment>
   );
 }
