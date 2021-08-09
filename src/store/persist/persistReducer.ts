@@ -15,7 +15,7 @@ function addUserInfo(data: any) {
   return obj;
 }
 
-export function userReducer(state = userState, action: any) {
+export function userReducer(state = userState, action: UserState) {
   switch (action.type) {
     case 'ADD': {
       return addUserInfo(action.data);
