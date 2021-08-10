@@ -1,14 +1,9 @@
 // import reportWebVitals from "./reportWebVitals";
-import { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import "antd/dist/antd.css";
 import "@common/less/antd.less";
 import RenderRoute from "@/router";
-import { get, post } from "@/api/service";
-
-Component.prototype.get = get;
-Component.prototype.post = post;
 
 ReactDOM.render(<RenderRoute />, document.getElementById("root"));
 

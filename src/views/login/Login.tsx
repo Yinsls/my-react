@@ -57,7 +57,7 @@ export default class ToLogin extends Component {
           name="username"
           value={this.state.username}
           onChange={this.onChangeVal.bind(this)}
-          placeholder="邮箱或手机号"
+          placeholder="邮箱"
         />
 
         <Input
