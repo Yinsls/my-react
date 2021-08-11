@@ -1,10 +1,9 @@
-import { Input, Button, Tooltip } from "antd";
-import Modal from "antd/lib/modal/Modal";
-import { Component } from "react";
-import { register } from "@/store/sign/action";
-import { store } from "@/store/sign";
-import { apiRegister, apiGetEmailCode, apiGetToken } from "@api/index";
-import axios from "axios";
+import { Input, Button, Tooltip } from 'antd';
+import Modal from 'antd/lib/modal/Modal';
+import { Component } from 'react';
+import { register } from '@/store/sign/action';
+import { store } from '@/store/sign';
+import { apiRegister, apiGetEmailCode } from '@api/index';
 
 interface Props {
   visible: boolean;
@@ -17,20 +16,20 @@ class Register extends Component<Props> {
   constructor(props: any) {
     super(props);
     this.state = {
-      username: "aa",
-      email: "aa@qq.com",
-      password: "111111111",
-      repassword: "111111111",
+      username: 'aa',
+      email: 'aa@qq.com',
+      password: '111111111',
+      repassword: '111111111',
       testState: store.getState(),
     };
   }
 
   initTooltip() {
     this.setState({
-      username: "",
-      email: "",
-      password: "",
-      repassword: "",
+      username: '',
+      email: '',
+      password: '',
+      repassword: '',
       testState: store.getState(),
     });
   }
@@ -45,51 +44,43 @@ class Register extends Component<Props> {
   setStateData(msg: { [key: string]: string }) {
     for (let key in this.state) {
       this.setState({
-        [key]: { tip: msg[key] || "", status: Boolean(msg[key]) },
+        [key]: { tip: msg[key] || '', status: Boolean(msg[key]) },
       });
     }
   }
 
   verifyData() {
-    // const result = axios.post("http://1.15.84.173/api/SMS/SendEmail", {
-    //   email: "2826315773@qq.com",
-    // });
-    const data = { email: "2826315773@qq.com" };
-    const result = apiGetToken(data);
-    console.log(result);
-    return;
-
     const username = /^\s*$/;
     const email = /^\w+@[a-z0-9]+\.[a-z]{2,4}$/;
     const password = /^\w{8,16}$/;
     const msg: { [key: string]: string } = {};
     let pass = true;
     if (username.test(this.state.username)) {
-      msg["username"] = "昵称异常";
+      msg['username'] = '昵称异常';
       pass = false;
     }
     if (!email.test(this.state.email)) {
-      msg["email"] = "邮箱异常";
+      msg['email'] = '邮箱异常';
       pass = false;
     }
 
     if (!this.state.password.length) {
-      msg["password"] = "密码不能为空";
+      msg['password'] = '密码不能为空';
       pass = false;
     } else if (!password.test(this.state.password)) {
       if (this.state.repassword !== this.state.password) {
-        msg["password"] = "密码不一致";
+        msg['password'] = '密码不一致';
       } else {
-        msg["password"] = "密码格式错误(8 ~ 16位)";
+        msg['password'] = '密码格式错误(8 ~ 16位)';
       }
       pass = false;
     }
 
     if (!this.state.repassword.length) {
-      msg["repassword"] = "密码不能为空";
+      msg['repassword'] = '密码不能为空';
       pass = false;
     } else if (this.state.repassword !== this.state.password) {
-      msg["repassword"] = "密码不一致";
+      msg['repassword'] = '密码不一致';
       pass = false;
     }
     if (!pass) {
@@ -119,7 +110,7 @@ class Register extends Component<Props> {
   }
 
   showTooltip = (val: string): boolean => {
-    return Boolean(this.state[val]["status"]);
+    return Boolean(this.state[val]['status']);
   };
 
   closeModule() {
@@ -142,7 +133,7 @@ class Register extends Component<Props> {
         style={{
           top: this.props.position.y,
           left: this.props.position.x,
-          margin: "0",
+          margin: '0',
         }}
         destroyOnClose={true}
         onCancel={this.closeModule.bind(this)}
@@ -159,7 +150,7 @@ class Register extends Component<Props> {
             name="username"
             placeholder="昵称"
             allowClear
-            style={{ marginBottom: "10px" }}
+            style={{ marginBottom: '10px' }}
           />
         </Tooltip>
         <Tooltip
@@ -175,7 +166,7 @@ class Register extends Component<Props> {
             type="password"
             placeholder="密码"
             allowClear
-            style={{ marginBottom: "10px" }}
+            style={{ marginBottom: '10px' }}
           />
         </Tooltip>
         <Tooltip
@@ -191,15 +182,11 @@ class Register extends Component<Props> {
             type="password"
             placeholder="确认密码"
             allowClear
-            style={{ marginBottom: "10px" }}
+            style={{ marginBottom: '10px' }}
           />
         </Tooltip>
-        <Tooltip
-          placement="right"
-          title={testStatus.email.tip}
-          visible={testStatus.email.status}
-        >
-          <div className="email-box" style={{ display: "flex" }}>
+        <Tooltip placement="right" title={testStatus.email.tip} visible={testStatus.email.status}>
+          <div className="email-box" style={{ display: 'flex' }}>
             <Input
               className="auto-border-input max"
               name="email"
@@ -207,23 +194,23 @@ class Register extends Component<Props> {
               onChange={this.handleInputChange}
               placeholder="邮箱"
               allowClear
-              style={{ marginBottom: "10px", marginRight: "10px" }}
+              style={{ marginBottom: '10px', marginRight: '10px' }}
             />
             <Button className="green" onClick={this.sendCode.bind(this)}>
               验证码
             </Button>
           </div>
         </Tooltip>
-        <div className="footer" style={{ textAlign: "center" }}>
+        <div className="footer" style={{ textAlign: 'center' }}>
           <Button
             className="green"
             type="primary"
             onClick={this.verifyData.bind(this)}
             style={{
-              width: "100%",
-              height: "40px",
-              borderRadius: "6px",
-              marginTop: "10px",
+              width: '100%',
+              height: '40px',
+              borderRadius: '6px',
+              marginTop: '10px',
             }}
           >
             注册

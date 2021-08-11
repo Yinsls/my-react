@@ -1,7 +1,4 @@
-// import axios from 'axios'
 import { get, post } from "./service";
-// const qs = require("qs");
-import qs from "qs";
 
 export function getWeather() {
   return new Promise(async (resolve, reject) => {
