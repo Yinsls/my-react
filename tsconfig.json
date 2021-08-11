@@ -13,12 +13,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noImplicitAny": false,
     "noEmit": true,
     "jsx": "react-jsx",
     "rootDir": "src",
     "outDir": "build",
     "paths": {
       "@/*": ["./src/*"],
+      "@api/*": ["./src/api/*"],
       "@views/*": ["./src/views/*"],
       "@common/*": ["./src/common/*"],
       "@components/*": ["./src/components/*"]

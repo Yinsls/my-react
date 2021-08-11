@@ -3,6 +3,8 @@ import Modal from "antd/lib/modal/Modal";
 import { Component } from "react";
 import { register } from "@/store/sign/action";
 import { store } from "@/store/sign";
+import { apiRegister, apiGetEmailCode, apiGetToken } from "@api/index";
+import axios from "axios";
 
 interface Props {
   visible: boolean;
@@ -14,12 +16,11 @@ class Register extends Component<Props> {
   state: any;
   constructor(props: any) {
     super(props);
-    // this.state = store.getState();
     this.state = {
-      username: "",
-      email: "",
-      password: "",
-      repassword: "",
+      username: "aa",
+      email: "aa@qq.com",
+      password: "111111111",
+      repassword: "111111111",
       testState: store.getState(),
     };
   }
@@ -50,37 +51,71 @@ class Register extends Component<Props> {
   }
 
   verifyData() {
+    // const result = axios.post("http://1.15.84.173/api/SMS/SendEmail", {
+    //   email: "2826315773@qq.com",
+    // });
+    const data = { email: "2826315773@qq.com" };
+    const result = apiGetToken(data);
+    console.log(result);
+    return;
+
     const username = /^\s*$/;
     const email = /^\w+@[a-z0-9]+\.[a-z]{2,4}$/;
     const password = /^\w{8,16}$/;
     const msg: { [key: string]: string } = {};
+    let pass = true;
     if (username.test(this.state.username)) {
       msg["username"] = "昵称异常";
+      pass = false;
     }
     if (!email.test(this.state.email)) {
       msg["email"] = "邮箱异常";
+      pass = false;
     }
 
     if (!this.state.password.length) {
       msg["password"] = "密码不能为空";
+      pass = false;
     } else if (!password.test(this.state.password)) {
       if (this.state.repassword !== this.state.password) {
         msg["password"] = "密码不一致";
       } else {
         msg["password"] = "密码格式错误(8 ~ 16位)";
       }
+      pass = false;
     }
 
     if (!this.state.repassword.length) {
       msg["repassword"] = "密码不能为空";
+      pass = false;
     } else if (this.state.repassword !== this.state.password) {
       msg["repassword"] = "密码不一致";
+      pass = false;
     }
-    // console.log(this.state, msg);
-    store.dispatch(register(msg));
-    this.setState({
-      testState: store.getState(),
-    });
+    if (!pass) {
+      store.dispatch(register(msg));
+      this.setState({
+        testState: store.getState(),
+      });
+    } else {
+      const data = {
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email,
+      };
+      this.toRegister(data);
+    }
+  }
+
+  async toRegister(data: any) {
+    const result = await apiRegister(data);
+    console.log(result);
+  }
+
+  async sendCode() {
+    const data = { email: this.state.email };
+    const result = await apiGetEmailCode(data);
+    console.log(result);
   }
 
   showTooltip = (val: string): boolean => {
@@ -129,21 +164,6 @@ class Register extends Component<Props> {
         </Tooltip>
         <Tooltip
           placement="right"
-          title={testStatus.email.tip}
-          visible={testStatus.email.status}
-        >
-          <Input
-            className="auto-border-input max"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            placeholder="邮箱或手机号"
-            allowClear
-            style={{ marginBottom: "10px" }}
-          />
-        </Tooltip>
-        <Tooltip
-          placement="right"
           title={testStatus.password.tip}
           visible={testStatus.password.status}
         >
@@ -173,6 +193,26 @@ class Register extends Component<Props> {
             allowClear
             style={{ marginBottom: "10px" }}
           />
+        </Tooltip>
+        <Tooltip
+          placement="right"
+          title={testStatus.email.tip}
+          visible={testStatus.email.status}
+        >
+          <div className="email-box" style={{ display: "flex" }}>
+            <Input
+              className="auto-border-input max"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleInputChange}
+              placeholder="邮箱"
+              allowClear
+              style={{ marginBottom: "10px", marginRight: "10px" }}
+            />
+            <Button className="green" onClick={this.sendCode.bind(this)}>
+              验证码
+            </Button>
+          </div>
         </Tooltip>
         <div className="footer" style={{ textAlign: "center" }}>
           <Button

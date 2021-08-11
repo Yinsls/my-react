@@ -1,26 +1,50 @@
 // import axios from 'axios'
-import { get, post } from './service'
+import { get, post } from "./service";
+// const qs = require("qs");
+import qs from "qs";
+
 export function getWeather() {
   return new Promise(async (resolve, reject) => {
-    const result = await get('/getApi/weatherforecast');
+    const result = await get("/getApi/weatherforecast");
     if (result) {
       resolve(result);
     } else {
       reject(result);
     }
-  })
+  });
 }
 
-export function register(data: any = {}) {
+export function apiRegister(data: any = {}) {
   return new Promise(async (resolve, reject) => {
-    const result = await post('/api/Login/Register', {
-      data
+    const result = await post("/api/Login/Register", {
+      data,
     });
     if (result) {
       resolve(result);
     } else {
       reject(result);
     }
-  })
+  });
 }
 
+export function apiGetEmailCode(data: any) {
+  return new Promise(async (resolve, reject) => {
+    const result = await post("/api/SMS/SendEmail", data);
+    if (result) {
+      resolve(result);
+    } else {
+      reject(result);
+    }
+  });
+}
+
+export function apiGetToken(data: any) {
+  return new Promise(async (resolve, reject) => {
+    const result = await post("​/api​/SMS​/SendEmail", data);
+    if (result) {
+      resolve(result);
+    } else {
+      reject(result);
+    }
+  });
+}
