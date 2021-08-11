@@ -1,6 +1,6 @@
-import Logo from "./Logo";
-import ToLogin from "./Login";
-import "./login.less";
+import Logo from './Logo';
+import ToLogin from './Login';
+import './login.less';
 
 function Login() {
   return (

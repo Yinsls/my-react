@@ -1,4 +1,5 @@
-import { get, post } from "./service";
+import { get, post } from './service';
+import axios from "axios"
 
 export function getWeather() {
   return new Promise(async (resolve, reject) => {

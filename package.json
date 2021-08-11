@@ -53,9 +53,9 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "5.0.2",
-    "prompts": "2.4.0",
     "prettier": "^2.3.2",
     "pretty-quick": "^3.1.1",
+    "prompts": "2.4.0",
     "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
@@ -111,6 +111,9 @@
   "devDependencies": {
     "@types/react-dom": "^17.0.8",
     "@types/react-router-dom": "^5.1.7",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.4.0",
     "http-proxy-middleware": "^2.0.1",
     "redux-devtools": "^3.7.0",
     "typescript": "^4.3.5"
