@@ -26,7 +26,7 @@ interface Action {
 
 function testState(msg: { [key: string]: string }) {
   const obj: any = { ...defaultState };
-  for (let key in obj) {
+  for (const key in obj) {
     obj[key] = { tip: msg[key], status: Boolean(msg[key]) };
   }
   return obj;

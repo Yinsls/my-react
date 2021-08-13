@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "antd/dist/antd.css";
 import "@common/less/antd.less";
+import "@common/less/public.less";
 import RenderRoute from "@/router";
 
 ReactDOM.render(<RenderRoute />, document.getElementById("root"));

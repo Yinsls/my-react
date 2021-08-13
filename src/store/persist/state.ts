@@ -1,5 +1,5 @@
 export const userState = {
-  username: '',
-  password: '',
-  email: ''
-}
+  username: "",
+  password: "",
+  email: "",
+};

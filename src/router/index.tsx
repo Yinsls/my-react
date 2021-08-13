@@ -2,12 +2,7 @@ import { Fragment } from "react";
 import store, { persistor } from "@/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import {
-  Redirect,
-  Route,
-  BrowserRouter as Router,
-  Switch,
-} from "react-router-dom";
+import { Redirect, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { routes, testRoute, rootRoute } from "./routes";
 
 const lastRoutes = [...routes, ...testRoute, ...rootRoute];

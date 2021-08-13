@@ -1,23 +1,23 @@
-import { userState } from './state'
+import { userState } from "./state";
 
 interface UserState {
   type: string;
   data: {
-    [key: string]: string
-  }
+    [key: string]: string;
+  };
 }
 
 function addUserInfo(data: any) {
   const obj: any = { ...userState };
-  for (let key in obj) {
-    obj[key] = data[key] || '';
+  for (const key in obj) {
+    obj[key] = data[key] || "";
   }
   return obj;
 }
 
 export function userReducer(state = userState, action: UserState) {
   switch (action.type) {
-    case 'ADD': {
+    case "ADD": {
       return addUserInfo(action.data);
     }
     default: {

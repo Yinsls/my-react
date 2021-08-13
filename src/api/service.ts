@@ -2,8 +2,8 @@ import { message } from "antd";
 import axios from "axios";
 
 const service = axios.create({
-  timeout: 30000
-})
+  timeout: 30000,
+});
 
 service.interceptors.request.use(
   (config) => {
@@ -58,21 +58,26 @@ service.interceptors.response.use(
 );
 export const get = (url: string, data?: any) => {
   return new Promise((resolve, reject) => {
-    service.get(url, data).then(res => {
-      resolve(res);
-    }).catch(err => {
-      reject(err);
-    })
-  })
-}
+    service
+      .get(url, data)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
 
 export const post = (url: string, data?: any) => {
   return new Promise((resolve, reject) => {
-    service.post(url, data).then(res => {
-      resolve(res);
-    }).catch(err => {
-      reject(err);
-    })
-  })
-}
-
+    service
+      .post(url, data)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

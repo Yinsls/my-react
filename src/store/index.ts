@@ -3,7 +3,7 @@ import { testReducer, showList, countReducer } from "./reducer/test";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
-import { userReducer } from './persist/persistReducer'
+import { userReducer } from "./persist/persistReducer";
 
 const persistConfig = {
   key: "root",
