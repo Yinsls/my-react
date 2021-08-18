@@ -1,6 +1,7 @@
 import { Component, Fragment } from "react";
 import { commentData } from "./data";
 import OuterComment from "./OuterComment";
+import "./Index.less";
 
 export default class Comment extends Component {
   constructor(props: any) {

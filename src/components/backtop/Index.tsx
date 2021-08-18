@@ -41,14 +41,8 @@ export default class BackTop extends Component<PropState> {
     }
   }
 
-  scrollToTarget(obj: {
-    target: HTMLElement;
-    top: number;
-    scrollTop: number;
-    time: 1000;
-  }) {
+  scrollToTarget(obj: { target: HTMLElement; top: number; scrollTop: number; time: 1000 }) {
     const speed = Number((obj.top / obj.time).toFixed(2));
-    let rate = 1;
     window.requestAnimationFrame(() => this.move(speed));
   }
 
@@ -65,10 +59,7 @@ export default class BackTop extends Component<PropState> {
   render() {
     return (
       <Fragment>
-        <div
-          className="btn-backtop"
-          style={{ width: this.state.width, height: this.state.height }}
-        >
+        <div className="btn-backtop" style={{ width: this.state.width, height: this.state.height }}>
           <i className="iconfont icon-fanhuidingbu"></i>
         </div>
       </Fragment>
