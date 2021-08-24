@@ -4,7 +4,10 @@ export const commentData = [
     user: "瑟瑟",
     msg: "塞法俄方的",
     like: 49,
-    child: [{ user: "child comment", msg: "发送到" }],
+    child: [
+      { user: "child comment", msg: "发送到1" },
+      { user: "child comment", msg: "发送到2" },
+    ],
   },
   {
     user: "嗷嗷",

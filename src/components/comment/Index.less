@@ -1,0 +1,52 @@
+@imgSize: 35px;
+@grayColor: rgb(245, 245, 245);
+
+img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+ul {
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  li {
+    // background-color: rgb(245, 245, 245);
+
+    .user,
+    .user-child {
+      .user-head {
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+      }
+
+      .user-message {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        margin-left: @imgSize;
+        border-bottom: 1px solid @grayColor;
+      }
+
+      img {
+        margin-right: 10px;
+      }
+    }
+
+    .user-child {
+      padding-left: calc(@imgSize + 5px);
+    }
+  }
+}
+
+.comment-option {
+  display: flex;
+  margin-top: 10px;
+
+  .opt {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+}
