@@ -27,3 +27,9 @@
   2、也可使用箭头函数方式设置class.function: handleClick = () => {...done}    button.onClick={this.handleClick}
   3、调用处使用箭头函数: button.onClick={() => this.handleClick()}    可能造成组件额外渲染浪费性能，推荐前两种方式
 ```
+
+## git
+
+> github生成token: github.user => setting => Developer settings => Personal accesstokens => generate new token
+> 切换远程分支(本地不存在): git checkout -b dev origin/dev
+> 将token添加到远程仓库链接: git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
