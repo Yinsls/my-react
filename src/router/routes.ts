@@ -9,7 +9,7 @@ export const routes = [
   },
 ];
 
-export const rootRoute = [{ path: "/", redirect: "/login" }];
+export const rootRoute = [{ path: "/", redirect: "/editor" }];
 
 export const testRoute = [
   {
