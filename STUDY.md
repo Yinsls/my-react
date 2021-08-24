@@ -27,3 +27,7 @@
   2、也可使用箭头函数方式设置class.function: handleClick = () => {...done}    button.onClick={this.handleClick}
   3、调用处使用箭头函数: button.onClick={() => this.handleClick()}    可能造成组件额外渲染浪费性能，推荐前两种方式
 ```
+
+## git
+
+> 切换远程分支(本地不存在): git checkout -b dev origin/dev
