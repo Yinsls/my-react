@@ -518,3 +518,17 @@ systemctl restart nginx     // 重启nginx
 > github生成token: github.user => setting => Developer settings => Personal accesstokens => generate new token
 > 切换远程分支(本地不存在): git checkout -b dev origin/dev
 > 将token添加到远程仓库链接: `git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git`
+
+### git代理
+
+socks代理
+> git config --global http.proxy 'socks5://127.0.0.1:1080'
+> git config --global https.proxy 'socks5://127.0.0.1:1080'
+
+http/https代理
+> git config --global http.proxy 'http://127.0.0.1:8080'
+> git config --global https.proxy 'http://127.0.0.1:8080'
+
+取消代理
+> git config --global --unset http.proxy
+> git config --global --unset https.proxy
