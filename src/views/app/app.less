@@ -15,8 +15,8 @@
 
 .App-header {
   /* background-color: #282c34; */
-  min-height: 100vh;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -32,7 +32,29 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.root-page {
+  height: 100vh;
+  background-image: url("~@static/images/macOSBackground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  height: 40px;
+  background-color: rgba(100, 100, 100, 0.3);
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  background-color: rgba(100, 100, 100, 0.3);
 }

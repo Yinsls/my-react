@@ -23,6 +23,7 @@
       "@api/*": ["./src/api/*"],
       "@views/*": ["./src/views/*"],
       "@common/*": ["./src/common/*"],
+      "@static/*": ["./src/static/*"],
       "@components/*": ["./src/components/*"]
     }
   },

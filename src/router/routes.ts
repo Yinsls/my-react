@@ -7,15 +7,12 @@ export const routes = [
     path: "/login",
     component: asyncComponent(() => import("@views/login/Index")),
   },
+  { path: "/error", component: asyncComponent(() => import("@views/error/404")) },
 ];
 
 export const rootRoute = [
   { path: "/", component: asyncComponent(() => import("@views/app/Index")) },
-];
-
-export const errorRoute = [
-  { path: "/404", component: asyncComponent(() => import("@views/error/404")) },
-  { path: "/*", redirect: "/404" },
+  { path: "*", redirect: "/error" },
 ];
 
 export const testRoute = [

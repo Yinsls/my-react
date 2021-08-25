@@ -1,10 +1,15 @@
 import { Fragment } from "react";
-import "./App.css";
+import "./app.less";
+// import "./test.less";
 
 export default function App() {
   return (
     <Fragment>
-      <h2>首页</h2>
+      <div className="root-page">
+        <div className="header"></div>
+        <div className="body"></div>
+        <div className="footer"></div>
+      </div>
     </Fragment>
   );
 }
