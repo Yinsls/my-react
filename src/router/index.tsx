@@ -3,9 +3,9 @@ import store, { persistor } from "@/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import { Redirect, Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { routes, testRoute, rootRoute } from "./routes";
+import { routes, testRoute, rootRoute, errorRoute } from "./routes";
 
-const lastRoutes = [...routes, ...testRoute, ...rootRoute];
+const lastRoutes = [...routes, ...testRoute, ...errorRoute, ...rootRoute];
 
 function getComponentArr(routes: any) {
   const res: any[] = [];
