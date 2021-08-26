@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import "./app.less";
-// import "./test.less";
 
 export default function App() {
   return (
