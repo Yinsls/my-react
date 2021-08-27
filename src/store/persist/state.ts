@@ -3,3 +3,5 @@ export const userState = {
   password: "",
   email: "",
 };
+
+export const dockState = [];

@@ -1,11 +1,5 @@
-import { userState } from "./state";
-
-interface UserState {
-  type: string;
-  data: {
-    [key: string]: string;
-  };
-}
+import { userState, dockState } from "./state";
+import { UserState, DockState } from "./interface";
 
 function addUserInfo(data: any) {
   const obj: any = { ...userState };
@@ -15,6 +9,7 @@ function addUserInfo(data: any) {
   return obj;
 }
 
+/** 设置用户信息 */
 export function userReducer(state = userState, action: UserState) {
   switch (action.type) {
     case "ADD": {
@@ -22,6 +17,27 @@ export function userReducer(state = userState, action: UserState) {
     }
     default: {
       return state;
+    }
+  }
+}
+
+/** 设置程序坞 */
+export function dockReducer(state = dockState, action: DockState) {
+  switch (action.type) {
+    case "ADD": {
+      break;
+    }
+    case "DELETE": {
+      break;
+    }
+    case "GET": {
+      return state;
+    }
+    case "UPDATE": {
+      return state;
+    }
+    default: {
+      return null;
     }
   }
 }

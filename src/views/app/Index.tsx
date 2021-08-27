@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Dock from "@components/dock/Index";
 import "./app.less";
 
 export default function App() {
@@ -7,7 +8,7 @@ export default function App() {
       <div className="root-page">
         <div className="header"></div>
         <div className="body"></div>
-        <div className="footer"></div>
+        <Dock pos="bottom" />
       </div>
     </Fragment>
   );
