@@ -1,20 +1,78 @@
+@keyframes showLessenTag {
+  0% {
+    transform: scale(1) translateY(-20px);
+  }
+
+  100% {
+    transform: scale(0.75) translateY(-40px);
+  }
+}
+
+@keyframes showLargenTag {
+  0% {
+    transform: scale(1) translateY(-20px);
+  }
+
+  100% {
+    transform: scale(1.25) translateY(-40px);
+  }
+}
+
 .software-space {
   &:hover .software {
     margin: 0 10px 15px;
     transform: scale(1.5);
+
+    .software-name {
+      animation: showLessenTag 0.3s forwards;
+
+      > span {
+        opacity: 1;
+      }
+    }
+  }
+
+  /** 取消hover效果 */
+  &.draging:hover .software {
+    margin: 0 0 10px 0;
+    transform: scale(1);
+
+    .software-name {
+      animation: showLargenTag 0.1s forwards;
+
+      > span {
+        opacity: 1;
+      }
+    }
   }
 
   display: flex;
   padding: 10px 15px;
   justify-content: center;
-}
 
-.software {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 10px;
-  text-align: center;
-  border-radius: 6px;
-  transition: transform 0.2s linear, margin 0.2s linear;
-  transform-origin: bottom;
+  .software {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 6px;
+    transition: transform 0.2s linear, margin 0.2s linear;
+    transform-origin: bottom;
+
+    .software-name {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+      > span {
+        float: left;
+        padding: 4px 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        background-color: rgba(211, 211, 211, 0.5);
+        border-radius: 4px;
+        opacity: 0;
+      }
+    }
+  }
 }

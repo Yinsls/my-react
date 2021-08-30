@@ -1,4 +1,4 @@
-import Software from "../dockSoftware/Index";
+import DockSoftware from "../dockSoftware/Index";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Component } from "react";
 import "./dock.less";
@@ -9,6 +9,7 @@ interface PropType {
 
 interface State {
   dockList: { id: string; name: string }[];
+  isDrag: boolean;
 }
 
 const dockList = [
@@ -16,6 +17,7 @@ const dockList = [
   { id: "dock-02", name: "爱奇艺", image: "http://49.234.181.185/images/boy.jpg" },
   { id: "dock-03", name: "知乎", image: "http://49.234.181.185/images/boy.jpg" },
   { id: "dock-04", name: "QQ", image: "http://49.234.181.185/images/boy.jpg" },
+  { id: "dock-05", name: "叮叮", image: "http://49.234.181.185/images/boy.jpg" },
 ];
 
 export default class Dock extends Component<PropType> {
@@ -24,15 +26,27 @@ export default class Dock extends Component<PropType> {
     super(props);
     this.state = {
       dockList: dockList,
+      isDrag: false,
     };
   }
+
+  /** drag开始时触发函数 */
+  onDragStart = () => {
+    this.setState({
+      isDrag: true,
+    });
+  };
 
   /** 程序坞 - 调整位置结束触发函数 */
   onDragEnd = (result) => {
     if (!result.destination) {
       return;
     }
-    const items = this.getDragResult(dockList, result.source.index, result.destination.index);
+    const items = this.getDragResult(
+      this.state.dockList,
+      result.source.index,
+      result.destination.index
+    );
     this.setState({
       dockList: items,
     });
@@ -49,38 +63,41 @@ export default class Dock extends Component<PropType> {
   /** 设置Drag时样式 */
   getDragStyle = (isDragging, draggableStyle) => ({
     userSelect: "none",
-    margin: "0",
-    padding: isDragging ? "10px 15px" : "0",
+    transform: "scale(1.5)",
     ...draggableStyle,
   });
 
+  resetDragStatus = () => {
+    this.setState({
+      isDrag: false,
+    });
+  };
+
   render() {
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
+      <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
         <Droppable droppableId="droppable" direction="horizontal">
-          {(provided) => (
-            <div className={"dock-" + this.props.pos} ref={provided.innerRef}>
-              <div className="dock-content">
-                {this.state.dockList.map((software, index) => {
-                  return (
-                    <Draggable draggableId={software.id} index={index} key={software.id}>
-                      {(provided, snapshot) => (
-                        <div
-                          className="software-box"
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          style={this.getDragStyle(
-                            snapshot.isDragging,
-                            provided.draggableProps.style
-                          )}
-                        >
-                          <Software software={software} />
-                        </div>
-                      )}
-                    </Draggable>
-                  );
-                })}
+          {(droppableProvided) => (
+            <div className="dock-bottom">
+              <div className="dock-content" ref={droppableProvided.innerRef}>
+                {this.state.dockList.map((item, index) => (
+                  <Draggable key={item.id} draggableId={item.id} index={index}>
+                    {(draggableProvided) => (
+                      <div
+                        ref={draggableProvided.innerRef}
+                        {...draggableProvided.draggableProps}
+                        {...draggableProvided.dragHandleProps}
+                      >
+                        <DockSoftware
+                          software={item}
+                          isDrag={this.state.isDrag}
+                          resetDragStatus={this.resetDragStatus}
+                        ></DockSoftware>
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {droppableProvided.placeholder}
               </div>
             </div>
           )}

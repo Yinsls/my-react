@@ -8,7 +8,7 @@ const paths = require("./paths");
 delete require.cache[require.resolve("./paths")];
 
 // set iconfont_url
-const iconfontUrl = "//at.alicdn.com/t/font_1603277_oi25jbiayc.css";
+const iconfontUrl = "//at.alicdn.com/t/font_2771849_ajr9efydl9g.css";
 const NODE_ENV = process.env.NODE_ENV;
 if (!NODE_ENV) {
   throw new Error("The NODE_ENV environment variable is required but was not specified.");
