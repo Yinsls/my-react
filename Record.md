@@ -792,6 +792,12 @@ http {
 
 ### git 代理
 
+git 10054 错误
+
+#### fatal: unable to access 'https://github.com/xxx.git/': OpenSSL SSL_read: Connection was reset, errno 10054
+
+> git 缓冲区大小不足导致，增大缓冲区容量 ([解决方式](https://stackoverflow.com/questions/46232906/git-clone-error-rpc-failed-curl-56-openssl-ssl-read-ssl-error-syscall-errno)): git config http.postBuffer 524288000
+
 socks 代理
 
 > git config --global http.proxy 'socks5://127.0.0.1:1080'
