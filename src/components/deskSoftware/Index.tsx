@@ -10,9 +10,15 @@ export default class DeskSoftware extends Component<Props> {
     super(props);
   }
 
+  showAlert() {
+    const modal = globalThis.showModal({ title: "十一点了" });
+    modal.show();
+  }
+
   render() {
     return (
       <div className="deskSoftware">
+        <button onClick={this.showAlert}>alert</button>
         {this.props.software.map((software) => {
           return (
             <div className="software" key={software.id}>

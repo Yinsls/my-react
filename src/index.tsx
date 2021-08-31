@@ -1,10 +1,15 @@
 // import reportWebVitals from "./reportWebVitals";
 import ReactDOM from "react-dom";
+import Modal from "@components/modal/Index";
 import "./index.css";
 import "antd/dist/antd.css";
 import "@common/less/antd.less";
 import "@common/less/public.less";
 import RenderRoute from "@/router";
+
+globalThis.showModal = (obj: any) => {
+  return new Modal(obj);
+};
 
 ReactDOM.render(<RenderRoute />, document.getElementById("root"));
 
