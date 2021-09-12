@@ -1,35 +1,37 @@
-import { Component } from "react";
+import { useState } from "react";
+import YunModal from "../modal/Index";
 import "./deskSoftware.less";
 
 interface Props {
   software: { id: string; name: string; image: string }[];
 }
 
-export default class DeskSoftware extends Component<Props> {
-  constructor(props: any) {
-    super(props);
+export default function DeskSoftware(props: Props) {
+  const [visible, setVisible] = useState(false);
+
+  function onCancel() {
+    setVisible(false);
+    console.log("cancel");
   }
 
-  showAlert() {
-    const modal = globalThis.showModal({ title: "十一点了" });
-    modal.show();
+  function onOk() {
+    setVisible(false);
+    console.log("ok");
   }
 
-  render() {
-    return (
-      <div className="deskSoftware">
-        <button onClick={this.showAlert}>alert</button>
-        {this.props.software.map((software) => {
-          return (
-            <div className="software" key={software.id}>
-              <div className="software-img">
-                <div className="img" style={{ backgroundImage: `url(${software.image})` }}></div>
-              </div>
-              <div className="software-name">{software.name}</div>
+  return (
+    <div className="deskSoftware">
+      {props.software.map((software) => {
+        return (
+          <div className="software" key={software.id}>
+            <div className="software-img" onClick={() => setVisible(!visible)}>
+              <div className="img" style={{ backgroundImage: `url(${software.image})` }}></div>
             </div>
-          );
-        })}
-      </div>
-    );
-  }
+            <div className="software-name">{software.name}</div>
+          </div>
+        );
+      })}
+      <YunModal visible={visible} onCancel={onCancel} onOk={onOk} top="100px" />
+    </div>
+  );
 }
