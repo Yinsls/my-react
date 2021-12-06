@@ -6,6 +6,8 @@ interface Props {
   isClose: boolean | undefined;
   titleSlot: any;
   toClose: Function;
+  scaleDown: Function;
+  scaleUp: Function;
 }
 
 export default class ModalHeader extends Component<Props> {
@@ -17,13 +19,16 @@ export default class ModalHeader extends Component<Props> {
     return (
       <div className="modal-header-content">
         <div className="modal-header-left">
+          <i className="iconfont icon-ditu-yuan red" onClick={(e) => this.props.toClose(e)}></i>
+          <i
+            className="iconfont icon-ditu-yuan orange"
+            onClick={(e) => this.props.scaleDown(e)}
+          ></i>
+          <i className="iconfont icon-ditu-yuan green" onClick={(e) => this.props.scaleUp(e)}></i>
+        </div>
+        <div className="modal-header-center">
           {this.props.titleSlot ? this.props.titleSlot : this.props.title}
         </div>
-        {this.props.isClose && (
-          <div className="modal-header-close" onClick={() => this.props.toClose()}>
-            <i className="iconfont icon-close"></i>
-          </div>
-        )}
       </div>
     );
   }

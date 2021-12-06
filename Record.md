@@ -541,6 +541,18 @@ useEffect:
   运用: dispatch(action)   action => reduces() => set state|get state
 ```
 
+## less
+
+- 引入 less: import style from './xxx.less (d.ts 添加 module)
+
+```javascript
+  declare module "*.module.scss" {
+    const classes: { readonly [key: string]: string };
+    export default classes;
+  }
+}
+```
+
 ## nginx
 
 > 官网: 'http://nginx.org/en/download.html'
@@ -815,3 +827,39 @@ http/https 代理
 > git config --global --unset http.proxy
 
 > git config --global --unset https.proxy
+
+创建分支(create test02)
+
+```
+test01>> git checkout -b test02 //本地创建test02分支并跳转到此分支
+test02>> git push origin test02 //将test02推送到远程仓库
+
+基于某分支创建分支:
+git checkout -b test02(待创建分支名) origin/test01(分支名)
+git push origin test02
+
+关联本地与远程分支:
+test002>> git push --set-upstream origin test001  //将本地test002分支与远程分支test001关联
+```
+
+删除分支(delete test01)
+
+```
+test01>> git checkout test01
+test02>> git branch -d test01 //删除本地分支test01(-D强行删除)
+test02>> git push origin --d test01 //删除远程分支test01
+```
+
+合并代码(merge test02)
+
+```
+test01>> git pull
+test01>> git checkout test02
+test02>> git pull
+test02>> git checkout test01
+test01>> git merge test02
+...解决冲突
+test01>> git add .
+test01>> git commit -m "merge test02"
+test01>> git push origin test01
+```

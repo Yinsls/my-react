@@ -1,3 +1,7 @@
+@modalCycleSpace: 8px;
+@modalStartPos: -4px;
+@modalPosWidth: 8px;
+
 .react-modal-box {
   &.hid {
     display: none;
@@ -25,6 +29,47 @@
 
     .react-modal-content {
       padding: 10px;
+    }
+
+    // 弹框定位层
+    .react-modal-mouse-box {
+      position: relative;
+
+      .modal-potion-top {
+        position: absolute;
+        top: @modalStartPos;
+        right: @modalCycleSpace;
+        left: @modalCycleSpace;
+        height: @modalPosWidth;
+        cursor: url("./cur/direction-up.cur") 6 15, pointer;
+      }
+
+      .modal-potion-right {
+        position: absolute;
+        top: @modalCycleSpace;
+        right: @modalStartPos;
+        bottom: @modalCycleSpace;
+        width: @modalPosWidth;
+        cursor: url("./cur/direction-right.cur") 0 6, pointer;
+      }
+
+      .modal-potion-bottom {
+        position: absolute;
+        right: @modalCycleSpace;
+        bottom: @modalStartPos;
+        left: @modalCycleSpace;
+        height: @modalPosWidth;
+        cursor: url("./cur/direction-down.cur") 6 0, pointer;
+      }
+
+      .modal-potion-left {
+        position: absolute;
+        top: @modalCycleSpace;
+        bottom: @modalCycleSpace;
+        left: @modalStartPos;
+        width: @modalPosWidth;
+        cursor: url("./cur/direction-left.cur") 20 6, pointer;
+      }
     }
   }
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 import YunModal from "../modal/Index";
 import "./deskSoftware.less";
 
@@ -7,31 +7,29 @@ interface Props {
 }
 
 export default function DeskSoftware(props: Props) {
-  const [visible, setVisible] = useState(false);
+  const modalRef = useRef<any>();
 
-  function onCancel() {
-    setVisible(false);
-    console.log("cancel");
-  }
+  const showModal = () => {
+    modalRef?.current?.show();
+  };
 
-  function onOk() {
-    setVisible(false);
-    console.log("ok");
-  }
+  const onOk = () => {
+    console.log("确定");
+  };
 
   return (
     <div className="deskSoftware">
       {props.software.map((software) => {
         return (
           <div className="software" key={software.id}>
-            <div className="software-img" onClick={() => setVisible(!visible)}>
+            <div className="software-img" onClick={showModal}>
               <div className="img" style={{ backgroundImage: `url(${software.image})` }}></div>
             </div>
             <div className="software-name">{software.name}</div>
           </div>
         );
       })}
-      <YunModal visible={visible} onCancel={onCancel} onOk={onOk} top="100px" />
+      <YunModal ref={modalRef} onOk={onOk} top="100px" />
     </div>
   );
 }

@@ -7,6 +7,32 @@
 
   .modal-header-left {
     padding-left: 10px;
+
+    .iconfont {
+      margin-right: 5px;
+      cursor: pointer;
+
+      &.red {
+        color: red;
+      }
+
+      &.green {
+        color: rgb(55, 208, 70);
+      }
+
+      &.orange {
+        color: rgb(255, 190, 50);
+      }
+    }
+  }
+
+  .modal-header-center {
+    flex: 1;
+    padding: 0 78px 0 5px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .modal-header-close {
@@ -17,7 +43,6 @@
     width: 30px;
     height: 25px;
     padding-right: 5px;
-    margin-left: auto;
     color: black;
     text-align: center;
     cursor: pointer;
